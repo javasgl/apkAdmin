@@ -1,0 +1,25 @@
+version: '3'
+services: 
+  gotest: 
+    build:  
+     context: ./admin
+     args:
+      - workdir=/go/src/admin
+    ports:
+     - '8000:8000'   
+    volumes:
+      - './admin:/go/src/admin'
+    command: bee run
+    links:
+      - mysql
+  mysql:
+    build:
+      context: ./mysql
+      args:
+        - MYSQL_ROOT_PASSWORD=123456 #mysql root password
+    ports:
+      - '3306:3306'    #mysql port
+    volumes:
+      - './mysql/conf:/etc/mysql/conf.d' #mysql custom conf files
+      - './mysql/datadir:/var/lib/mysql' #mysql data files
+    tty: true   
