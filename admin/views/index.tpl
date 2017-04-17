@@ -9,7 +9,7 @@
 <body>
   <div id="app">
     <el-form label-position="left" label-width="0px" class="login-container">
-      <h3 class="title">apk package system</h3>
+      <h3 class="title">apk packaging system</h3>
       <el-form-item prop="account">
         <el-input type="text" v-model="account" auto-complete="off" placeholder="账号"></el-input>
       </el-form-item>
