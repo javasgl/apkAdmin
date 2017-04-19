@@ -3,7 +3,7 @@
 		el:'#app',
 		methods:{
 			doLogin:function(){
-				axios.get('/api/login').then(function(res){
+				axios.post('/api/login',{account:this.account,password:this.password}).then(function(res){
 					console.log(res);
 				});
 			}

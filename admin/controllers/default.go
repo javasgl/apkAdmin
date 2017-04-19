@@ -1,6 +1,10 @@
 package controllers
 
 import (
+	"encoding/json"
+
+	"admin/models"
+
 	"github.com/astaxie/beego"
 )
 
@@ -17,7 +21,9 @@ func (this *MainController) Get() {
 	this.LayoutSections["HtmlScripts"] = "login/scripts.tpl"
 }
 func (this *MainController) DoLogin() {
-	beego.Debug("login...")
-	this.Data["json"] = "username is empty"
+	var loginUser models.LoginUser
+	json.Unmarshal(this.Ctx.Input.RequestBody, &loginUser)
+	beego.Debug("user:", loginUser)
+	this.Data["json"] = loginUser
 	this.ServeJSON()
 }
