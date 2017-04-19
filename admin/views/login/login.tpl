@@ -9,7 +9,7 @@
       </el-form-item>
       <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
       <el-form-item style="width:100%;">
-        <el-button type="primary" style="width:100%;" class="login-btn">已有账号->>登录</el-button>
+        <el-button type="primary" style="width:100%;" class="login-btn" @click="doLogin">已有账号->>登录</el-button>
         <el-button type="primary" style="width:100%;" class="regist-btn">没有账号->>注册</el-button>
       </el-form-item>
     </el-form>

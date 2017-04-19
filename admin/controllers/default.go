@@ -16,3 +16,8 @@ func (this *MainController) Get() {
 	this.LayoutSections["HtmlBody"] = "login/login.tpl"
 	this.LayoutSections["HtmlScripts"] = "login/scripts.tpl"
 }
+func (this *MainController) DoLogin() {
+	beego.Debug("login...")
+	this.Data["json"] = "username is empty"
+	this.ServeJSON()
+}
