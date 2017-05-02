@@ -1,12 +1,12 @@
 version: '3'
 services: 
-  gotest: 
+  admin:
     build:  
      context: ./admin
      args:
       - workdir=/go/src/admin
     ports:
-     - '8000:8000'   
+     - '8888:8000'
     volumes:
       - './admin:/go/src/admin'
     command: bee run
