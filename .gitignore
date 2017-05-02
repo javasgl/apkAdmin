@@ -1,3 +1,4 @@
 mysql/datadir/*
 !mysql/datadir/.gitignore
 admin/admin
+.idea
