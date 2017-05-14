@@ -23,6 +23,7 @@ func (this *MainController) Get() {
 func (this *MainController) DoLogin() {
 	var loginUser models.LoginUser
 	json.Unmarshal(this.Ctx.Input.RequestBody, &loginUser)
+	models.GetUserId(loginUser)
 	beego.Debug("user:", loginUser)
 	this.Data["json"] = loginUser
 	this.ServeJSON()

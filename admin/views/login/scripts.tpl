@@ -3,14 +3,14 @@
 		el:'#app',
 		methods:{
 			doLogin:function(){
-				axios.post('/api/login',{account:this.account,password:this.password}).then(function(res){
+				axios.post('/api/login',{username:this.username,password:this.password}).then(function(res){
 					console.log(res);
 				});
 			}
 		},
 		data:{
 			checked: true,
-			account:'songgl',
+			username:'songgl',
 			password:'123456'
 		}
 	});

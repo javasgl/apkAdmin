@@ -1,8 +1,8 @@
   <div id="app">
     <el-form label-position="left" label-width="0px" class="login-container">
       <h3 class="title">apk packaging system</h3>
-      <el-form-item prop="account">
-        <el-input type="text" v-model="account" auto-complete="off" placeholder="账号"></el-input>
+      <el-form-item prop="username">
+        <el-input type="text" v-model="username" auto-complete="off" placeholder="账号"></el-input>
       </el-form-item>
       <el-form-item prop="password">
         <el-input type="password" v-model="password" auto-complete="off" placeholder="密码"></el-input>

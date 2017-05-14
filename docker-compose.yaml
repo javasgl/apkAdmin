@@ -22,4 +22,4 @@ services:
     volumes:
       - './mysql/conf:/etc/mysql/conf.d' #mysql custom conf files
       - './mysql/datadir:/var/lib/mysql' #mysql data files
-    tty: true   
+    tty: true 
