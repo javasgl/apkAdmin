@@ -23,3 +23,13 @@ services:
       - './mysql/conf:/etc/mysql/conf.d' #mysql custom conf files
       - './mysql/datadir:/var/lib/mysql' #mysql data files
     tty: true 
+  phpmyadmin:
+    build:
+      context: ./phpmyadmin
+    environment:
+      - PMA_HOSTS=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=123456
+    restart: always
+    ports:
+      - '8080:80'
