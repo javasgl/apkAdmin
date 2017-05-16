@@ -23,7 +23,14 @@ func (this *MainController) Get() {
 func (this *MainController) DoLogin() {
 	var loginUser models.LoginUser
 	json.Unmarshal(this.Ctx.Input.RequestBody, &loginUser)
-	models.GetUserId(loginUser)
+
+	loginSuccess := models.Login(loginUser.Username, loginUser.Password)
+	if loginSuccess {
+		this.Ctx.Output.Cookie("apksys-ticket", string(loginUser.UserId)+"-"+loginUser.Password, 86400*30)
+	} else {
+		beego.Debug("login faild")
+	}
+
 	beego.Debug("user:", loginUser)
 	this.Data["json"] = loginUser
 	this.ServeJSON()
