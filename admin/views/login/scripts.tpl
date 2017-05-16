@@ -1,10 +1,15 @@
 <script type="text/javascript">
 	new Vue({
-		el:'#app',
+		el:'#login',
 		methods:{
 			doLogin:function(){
+				var that = this;
 				axios.post('/api/login',{username:this.username,password:this.password}).then(function(res){
-					console.log(res);
+					if(res.data){
+						location.href="/admin/channel";
+					}else{
+						that.$message.error('用户名密码不正确~');
+					}
 				});
 			}
 		},

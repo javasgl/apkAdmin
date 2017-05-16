@@ -1,17 +1,10 @@
 package models
 
 import (
-	"sync"
-
 	"admin/utils"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-)
-
-var (
-	UserMutex      sync.RWMutex
-	UserSessionMap map[string]string
 )
 
 type LoginUser struct {
@@ -21,7 +14,6 @@ type LoginUser struct {
 }
 
 func init() {
-	UserSessionMap = make(map[string]string)
 }
 
 func GetUserId(user LoginUser) {
@@ -37,17 +29,5 @@ func Login(username, password string) bool {
 	if _, ok := result[username]; !ok {
 		return false
 	}
-
-	UserMutex.Lock()
-	UserSessionMap[username] = password
-	UserMutex.Unlock()
 	return true
-}
-func IsLogined(userId, session string) bool {
-	if session == "" {
-		return false
-	}
-	UserMutex.RLock()
-	defer UserMutex.RUnlock()
-	return UserSessionMap[userId] == session
 }

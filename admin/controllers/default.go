@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 
 	"admin/models"
+	"admin/utils"
 
 	"github.com/astaxie/beego"
 )
@@ -21,17 +22,16 @@ func (this *MainController) Get() {
 	this.LayoutSections["HtmlScripts"] = "login/scripts.tpl"
 }
 func (this *MainController) DoLogin() {
+
 	var loginUser models.LoginUser
+
 	json.Unmarshal(this.Ctx.Input.RequestBody, &loginUser)
 
 	loginSuccess := models.Login(loginUser.Username, loginUser.Password)
 	if loginSuccess {
-		this.Ctx.Output.Cookie("apksys-ticket", string(loginUser.UserId)+"-"+loginUser.Password, 86400*30)
-	} else {
-		beego.Debug("login faild")
+		this.Ctx.Output.Cookie("apksystoken", utils.GenerateToken(loginUser.Username), 86400*30)
+		this.Ctx.Output.Cookie("username", loginUser.Username, 86400*30)
 	}
-
-	beego.Debug("user:", loginUser)
-	this.Data["json"] = loginUser
+	this.Data["json"] = loginSuccess
 	this.ServeJSON()
 }

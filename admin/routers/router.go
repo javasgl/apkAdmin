@@ -3,13 +3,25 @@ package routers
 import (
 	"admin/controllers"
 	"admin/models"
+	"admin/utils"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
 )
 
 func init() {
+	models.Init()
 	beego.Router("/", &controllers.MainController{})
 	beego.Router("/api/login", &controllers.MainController{}, "post:DoLogin")
+	beego.Router("/admin/channel", &controllers.ChannelController{})
 
-	models.Init()
+	var FilterUser = func(ctx *context.Context) {
+		beego.Error("requesturi:" + ctx.Request.RequestURI)
+		if utils.ValidateToken(ctx.Input.Cookie("username"), ctx.Input.Cookie("apksystoken")) {
+			beego.Error("filter success")
+			return
+		}
+		ctx.Redirect(302, "/")
+	}
+	beego.InsertFilter("/admin/*", beego.BeforeRouter, FilterUser)
 }
