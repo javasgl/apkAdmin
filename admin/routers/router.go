@@ -13,7 +13,7 @@ func init() {
 	models.Init()
 	beego.Router("/", &controllers.MainController{})
 	beego.Router("/api/login", &controllers.MainController{}, "post:DoLogin")
-	beego.Router("/admin/channel", &controllers.ChannelController{})
+	beego.Router("/dashboard/channel", &controllers.ChannelController{})
 
 	var FilterUser = func(ctx *context.Context) {
 		beego.Error("requesturi:" + ctx.Request.RequestURI)
@@ -23,5 +23,5 @@ func init() {
 		}
 		ctx.Redirect(302, "/")
 	}
-	beego.InsertFilter("/admin/*", beego.BeforeRouter, FilterUser)
+	beego.InsertFilter("/dashboard/*", beego.BeforeRouter, FilterUser)
 }
