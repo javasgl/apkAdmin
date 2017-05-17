@@ -1,9 +1,9 @@
 package routers
 
 import (
-	"admin/controllers"
-	"admin/models"
-	"admin/utils"
+	"github.com/javasgl/apkAdmin/admin/controllers"
+	"github.com/javasgl/apkAdmin/admin/models"
+	"github.com/javasgl/apkAdmin/admin/utils"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"

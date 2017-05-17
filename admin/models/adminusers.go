@@ -1,7 +1,7 @@
 package models
 
 import (
-	"admin/utils"
+	"github.com/javasgl/apkAdmin/admin/utils"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"

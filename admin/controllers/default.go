@@ -3,8 +3,7 @@ package controllers
 import (
 	"encoding/json"
 
-	"admin/models"
-	"admin/utils"
+	"github.com/javasgl/apkAdmin/admin/models"
 
 	"github.com/astaxie/beego"
 )
