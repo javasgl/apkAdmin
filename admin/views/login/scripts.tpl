@@ -6,7 +6,7 @@
 				var that = this;
 				axios.post('/api/login',{username:this.username,password:this.password}).then(function(res){
 					if(res.data){
-						location.href="/dashboard/channel";
+						location.href="/dashboard/packing";
 					}else{
 						that.$message.error('用户名密码不正确~');
 					}
