@@ -4,11 +4,11 @@ services:
     build:  
      context: ./admin
      args:
-      - workdir=/go/src/admin
+      - workdir=/go/src/github.com/javasgl/apkAdmin/admin
     ports:
      - '8888:8000'
     volumes:
-      - './admin:/go/src/admin'
+      - './admin:/go/src/github.com/javasgl/apkAdmin/admin'
     command: bee run
     links:
       - mysql
