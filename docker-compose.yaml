@@ -26,6 +26,8 @@ services:
   phpmyadmin:
     build:
       context: ./phpmyadmin
+    depends_on:
+      - mysql
     environment:
       - PMA_HOSTS=mysql
       - PMA_USER=root
