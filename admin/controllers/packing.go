@@ -15,3 +15,8 @@ func (this *PackingController) Get() {
 	this.LayoutSections["HtmlBody"] = "packing/packing.tpl"
 	this.LayoutSections["HtmlScripts"] = "packing/scripts.tpl"
 }
+
+func (this *PackingController) DoPacking() {
+
+	beego.Debug(this.Ctx.Input.GetData("apkVersion"))
+}

@@ -27,7 +27,7 @@
 						<el-col :span="8">
 							<el-form label-width="80px">
 								<el-form-item label="版本号">
-									<el-input :value="22" placeholder="eg: 8.2.6"></el-input>
+									<el-input v-model="form.apkVersion" placeholder="eg: 8.2.6"></el-input>
 								</el-form-item>
 								<el-form-item label="渠道">
 									<el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
@@ -36,7 +36,7 @@
 									</el-checkbox-group>
 								</el-form-item>
 								<el-form-item label="">
-									<el-button type="primary" size="small" icon="menu">start packing ! </el-button>
+									<el-button type="primary" size="small" icon="menu" @click="packing">start packing ! </el-button>
 								</el-form-item>
 							</el-form>
 						</el-col>

@@ -8,7 +8,7 @@
 					if(res.data){
 						location.href="/dashboard/packing";
 					}else{
-						that.$message.error('用户名密码不正确~');
+						that.$notify.error('用户名密码不正确~');
 					}
 				});
 			}

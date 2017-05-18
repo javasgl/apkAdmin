@@ -3,7 +3,6 @@
 		el:'#channel',
 		methods:{
 			handleCheckAllChange:function(event){
-				// debugger;
 				this.form.checkedChannels = event.target.checked ? this.channels : [];
 				this.isIndeterminate = false;	
 			},
@@ -11,6 +10,28 @@
 				let checkedCount = value.length;
 				this.checkAll = checkedCount === this.channels.length;
 				this.isIndeterminate = checkedCount > 0 && checkedCount < this.channels.length;
+			},
+			packing:function(){
+				if(!this.form.apkVersion){
+					this.$notify({
+						title: 'Tips',
+						message: '请输入客户端app版本号',
+						type:'error'
+					});
+					return;
+				}
+				if(!this.form.checkedChannels.length){
+					this.$notify({
+						title: 'Tips',
+						message: '请选择渠道',
+						type:'error'
+					});
+					return;
+				}
+				axios.post('/dashboard/dopacking/',this.form).then(function(res){
+
+				});
+
 			}
 		},
 		data:{
@@ -22,7 +43,8 @@
 			isIndeterminate:true,
 			icon:'#',
 			form:{
-				checkedChannels:['a','c']
+				checkedChannels:['a','c'],
+				apkVersion:''
 			}
 		}
 	});
