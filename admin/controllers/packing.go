@@ -1,6 +1,12 @@
 package controllers
 
-import "github.com/astaxie/beego"
+import (
+	"encoding/json"
+
+	"github.com/astaxie/beego"
+
+	"github.com/javasgl/apkAdmin/admin/models"
+)
 
 type PackingController struct {
 	beego.Controller
@@ -18,5 +24,9 @@ func (this *PackingController) Get() {
 
 func (this *PackingController) DoPacking() {
 
-	beego.Debug(this.Ctx.Input.GetData("apkVersion"))
+	var packParams models.PackParams
+	json.Unmarshal(this.Ctx.Input.RequestBody, &packParams)
+	beego.Debug(packParams)
+	this.Data["json"] = 1
+	this.ServeJSON()
 }
