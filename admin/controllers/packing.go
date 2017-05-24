@@ -24,6 +24,7 @@ func (this *PackingController) Get() {
 
 func (this *PackingController) DoPacking() {
 
+	beego.Debug(this.GetSession("apk_userId"))
 	var packJob models.PackingJobs
 	json.Unmarshal(this.Ctx.Input.RequestBody, &packJob)
 	models.AddPackingJob(packJob)

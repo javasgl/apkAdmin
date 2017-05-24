@@ -27,7 +27,7 @@ func AddPackingJob(packJob PackingJobs) bool {
 
 	beego.Debug(packJob)
 
-	orm.NewOrm().Insert(&packJob)
+	// orm.NewOrm().Insert(&packJob)
 
 	return false
 }
