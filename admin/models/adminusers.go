@@ -9,8 +9,8 @@ import (
 
 type LoginUser struct {
 	UserId   int    `orm:"PK"`
-	Username string `orm:size(100)`
-	Password string `orm:size(50)`
+	Username string `orm:"size(100)"`
+	Password string `orm:"size(50)"`
 }
 
 func init() {

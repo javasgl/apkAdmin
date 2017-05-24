@@ -26,7 +26,7 @@ func (this *PackingController) DoPacking() {
 
 	var packParams models.PackParams
 	json.Unmarshal(this.Ctx.Input.RequestBody, &packParams)
-	beego.Debug(packParams)
+	models.AddPackingJob(packParams)
 	this.Data["json"] = 1
 	this.ServeJSON()
 }
