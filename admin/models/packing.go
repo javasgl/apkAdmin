@@ -5,20 +5,24 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type PackParams struct {
+type PackingJobs struct {
 	JobId           int      `json:"-" orm:"PK"`
 	ApkVersion      string   `json:"apkVersion" orm:"size(20)"`
 	CheckedChannels []string `json:"checkedChannels" orm:"-"`
+	CreateTime      int
+	CreatorId       int
+	Status          int
+	DownloadUrl     string `orm:"size(100)"`
 }
 
-func AddPackingJob(packParams PackParams) bool {
+func AddPackingJob(packJob PackingJobs) bool {
 	//todo
-	beego.Debug(packParams)
+	beego.Debug(packJob)
 
-	orm.NewOrm().Insert(&packParams)
+	orm.NewOrm().Insert(&packJob)
 
 	return false
 }
 func init() {
-	orm.RegisterModel(new(PackParams))
+	orm.RegisterModel(new(PackingJobs))
 }

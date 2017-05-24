@@ -24,9 +24,9 @@ func (this *PackingController) Get() {
 
 func (this *PackingController) DoPacking() {
 
-	var packParams models.PackParams
-	json.Unmarshal(this.Ctx.Input.RequestBody, &packParams)
-	models.AddPackingJob(packParams)
+	var packJob models.PackingJobs
+	json.Unmarshal(this.Ctx.Input.RequestBody, &packJob)
+	models.AddPackingJob(packJob)
 	this.Data["json"] = 1
 	this.ServeJSON()
 }
