@@ -26,12 +26,12 @@ func (this *MainController) DoLogin() {
 	var loginUser models.LoginUser
 	json.Unmarshal(this.Ctx.Input.RequestBody, &loginUser)
 
-	loginSuccess := models.Login(loginUser.Username, loginUser.Password)
-	if loginSuccess {
+	loginRes, _ := models.Login(loginUser)
+	if loginRes != nil {
 		this.Ctx.Output.Cookie("apksystoken", utils.GenerateToken(loginUser.Username), 86400*30)
 		this.Ctx.Output.Cookie("username", loginUser.Username, 86400*30)
-		this.SetSession("apk_userId", int(1))
+		this.SetSession("apk_userId", loginRes)
 	}
-	this.Data["json"] = loginSuccess
+	this.Data["json"] = loginRes
 	this.ServeJSON()
 }

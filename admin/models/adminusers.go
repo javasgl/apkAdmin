@@ -1,6 +1,8 @@
 package models
 
 import (
+	"errors"
+
 	"github.com/javasgl/apkAdmin/admin/utils"
 
 	"github.com/astaxie/beego"
@@ -22,12 +24,12 @@ func GetUserId(user LoginUser) {
 	o := orm.NewOrm()
 	o.Insert(&user)
 }
-func Login(username, password string) bool {
+func Login(user LoginUser) (res orm.Params, err error) {
 	result := make(orm.Params)
-	orm.NewOrm().Raw("SELECT username,password FROM login_user WHERE username=? AND password=?", username, utils.String2md5(password)).RowsToMap(&result, "username", "password")
+	orm.NewOrm().Raw("SELECT user_id,username FROM login_user WHERE username=? AND password=?", user.Username, utils.String2md5(user.Password)).RowsToMap(&result, "username", "user_id")
 
-	if _, ok := result[username]; !ok {
-		return false
+	if _, ok := result[user.Username]; !ok {
+		return nil, errors.New("user not exists")
 	}
-	return true
+	return result, nil
 }

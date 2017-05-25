@@ -17,10 +17,8 @@ func init() {
 	beego.Router("/dashboard/dopacking", &controllers.PackingController{}, "post:DoPacking")
 
 	var FilterUser = func(ctx *context.Context) {
-		beego.Error("requesturi:" + ctx.Request.RequestURI)
-		beego.Debug(ctx.Input.CruSession.Get("apk_userId"))
-		if utils.ValidateToken(ctx.Input.Cookie("username"), ctx.Input.Cookie("apksystoken")) {
-			beego.Error("filter success")
+
+		if utils.ValidateToken(ctx) {
 			return
 		}
 		ctx.Redirect(302, "/")
