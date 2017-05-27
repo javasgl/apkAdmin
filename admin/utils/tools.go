@@ -18,7 +18,7 @@ func GenerateToken(username string) string {
 }
 
 func ValidateToken(ctx *context.Context) bool {
-	session := ctx.Input.CruSession.Get("apk_userId")
+	session := ctx.Input.CruSession.Get("apkuser")
 	if session != nil {
 		return true
 	}

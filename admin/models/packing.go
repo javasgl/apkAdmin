@@ -29,7 +29,22 @@ func AddPackingJob(packJob PackingJobs) bool {
 
 	// orm.NewOrm().Insert(&packJob)
 
+	GetPackingJobs(1, 20)
+
 	return false
+}
+
+func GetPackingJobs(page, size int) []PackingJobs {
+	var jobs []PackingJobs
+	orm.NewOrm().Raw("SELECT * FROM packing_jobs ORDER BY create_time DESC LIMIT ?,?", (page-1)*size, size).QueryRows(&jobs)
+	for index, job := range jobs {
+		if job.ApkChannel != "" {
+			jobs[index].CheckedChannels = strings.Split(job.ApkChannel, ",")
+		} else {
+			jobs[index].CheckedChannels = []string{}
+		}
+	}
+	return jobs
 }
 func init() {
 	orm.RegisterModel(new(PackingJobs))

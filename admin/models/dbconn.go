@@ -17,8 +17,6 @@ func Init() {
 	dsn := fmt.Sprintf("%s:%s@(%s:%s)/%s?charset=utf8", dbuser, dbpass, dbhost, dbport, dbname)
 	orm.RegisterDataBase("default", "mysql", dsn)
 
-	orm.RegisterModel(new(LoginUser))
-
 	if beego.AppConfig.String("runmode") == "dev" {
 		orm.Debug = true
 	}
