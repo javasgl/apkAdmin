@@ -35,9 +35,8 @@
 			}
 		},
 		mounted:function(){
-			var that = this
-			axios.get('/dashboard/getJobs').then(function(res){
-				that.jobs = res.data.jobs
+			axios.get('/dashboard/getJobs').then((res)=>{
+				this.jobs = res.data.jobs
 			});
 		},
 		data:{
