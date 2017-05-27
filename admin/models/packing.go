@@ -13,10 +13,10 @@ type PackingJobs struct {
 	ApkVersion      string   `json:"apkVersion" orm:"size(20)"`
 	CheckedChannels []string `json:"checkedChannels" orm:"-"`
 	ApkChannel      string   `json:"-"`
-	CreateTime      int64
-	CreatorId       int
-	Status          int
-	DownloadUrl     string `orm:"size(100)"`
+	CreateTime      int64    `json:"createTime"`
+	CreatorId       int      `json:"createId"`
+	Status          int      `json:"status"`
+	DownloadUrl     string   `orm:"size(100)" json:"downloadUrl`
 }
 
 func AddPackingJob(packJob PackingJobs) bool {

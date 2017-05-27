@@ -44,12 +44,12 @@
 					</el-row>
 				</el-collapse-item>
 				<el-collapse-item title="history" name="2">
-					<el-table>
-						<el-table-column prop="date" label="日期"></el-table-column>
-						<el-table-column prop="date" label="操作人"></el-table-column>
-						<el-table-column prop="date" label="版本"></el-table-column>
-						<el-table-column prop="date" label="进度"></el-table-column>
-						<el-table-column prop="date" label="下载"></el-table-column>
+					<el-table :data="jobs">
+						<el-table-column prop="createTime" label="日期"></el-table-column>
+						<el-table-column prop="creatorId" label="操作人"></el-table-column>
+						<el-table-column prop="apkVersion" label="版本"></el-table-column>
+						<el-table-column prop="status" label="进度"></el-table-column>
+						<el-table-column prop="downloadUrl" label="下载"></el-table-column>
 					</el-table>
 				</el-collapse-item>
 			</el-collapse>

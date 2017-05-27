@@ -28,11 +28,17 @@
 					});
 					return;
 				}
-				axios.post('/dashboard/dopacking/',this.form).then(function(res){
+				axios.post('/dashboard/addJob/',this.form).then(function(res){
 
 				});
 
 			}
+		},
+		mounted:function(){
+			var that = this
+			axios.get('/dashboard/getJobs').then(function(res){
+				that.jobs = res.data.jobs
+			});
 		},
 		data:{
 			activeNames:['1','2'],
@@ -45,7 +51,8 @@
 			form:{
 				checkedChannels:['a','c'],
 				apkVersion:''
-			}
+			},
+			jobs:[],
 		}
 	});
 </script>

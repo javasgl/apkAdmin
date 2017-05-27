@@ -22,12 +22,20 @@ func (this *PackingController) Get() {
 	this.LayoutSections["HtmlScripts"] = "packing/scripts.tpl"
 }
 
-func (this *PackingController) DoPacking() {
+func (this *PackingController) AddJob() {
 
 	beego.Debug(this.GetSession("apkuser"))
 	var packJob models.PackingJobs
 	json.Unmarshal(this.Ctx.Input.RequestBody, &packJob)
 	models.AddPackingJob(packJob)
 	this.Data["json"] = models.GetPackingJobs(1, 30)
+	this.ServeJSON()
+}
+
+func (this *PackingController) GetJobs() {
+
+	res := make(map[string][]models.PackingJobs)
+	res["jobs"] = models.GetPackingJobs(1, 20)
+	this.Data["json"] = res
 	this.ServeJSON()
 }

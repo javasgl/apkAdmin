@@ -14,7 +14,8 @@ func init() {
 	beego.Router("/", &controllers.MainController{})
 	beego.Router("/api/login", &controllers.MainController{}, "post:DoLogin")
 	beego.Router("/dashboard/packing", &controllers.PackingController{})
-	beego.Router("/dashboard/dopacking", &controllers.PackingController{}, "post:DoPacking")
+	beego.Router("/dashboard/addJob", &controllers.PackingController{}, "post:AddJob")
+	beego.Router("/dashboard/getJobs", &controllers.PackingController{}, "get:GetJobs")
 
 	var FilterUser = func(ctx *context.Context) {
 
