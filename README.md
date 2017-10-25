@@ -7,7 +7,7 @@ use docker & docker-compose, your just need to `docker-compose up -d`, then open
 ## development
 
 rebuild mysql:
-	- docker-compose stop mysql
-	- docker-compose rm mysql
-	- docker-compose build mysql
-	- docker-compose up -d mysql
+- docker-compose stop mysql	
+- docker-compose rm mysql	
+- docker-compose build mysql
+- docker-compose up -d mysql
