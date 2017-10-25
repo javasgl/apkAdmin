@@ -1,6 +1,9 @@
 DROP USER IF EXISTS 'apkAdmin'; 
 CREATE USER 'apkAdmin'@'%'; 
-CREATE DATABASE IF NOT EXISTS apkAdmin; 
+
+DROP DATABASE IF EXISTS `apkAdmin`;
+CREATE DATABASE IF NOT EXISTS `apkAdmin`;
+
 GRANT ALL ON apkAdmin.* TO 'apkAdmin'@'%' IDENTIFIED BY '123456';
 
 ## create table apk_users
@@ -28,8 +31,8 @@ CREATE TABLE IF NOT EXISTS `apk_channels`(
 USE apkAdmin;
 CREATE TABLE IF NOT EXISTS `apk_jobs`(
 	`job_id` int unsigned not null AUTO_INCREMENT,
-	`appId` int unsigned not null default 1,
-	`release_type` int unsigned not null default 0
+	`app_id` int unsigned not null default 1,
+	`release_type` int unsigned not null default 0,
 	`app_name` varchar(100) not null default '',
 	`apk_version` varchar(20) not null default '',
 	`apk_channel` varchar(1000) not null default '',
@@ -37,6 +40,6 @@ CREATE TABLE IF NOT EXISTS `apk_jobs`(
 	`create_time` int unsigned not null default 0,
 	`status`  smallint  unsigned not null default 0,
 	`download_url` varchar(100) not null default '',
-	`splash_image` varchar(200) not null default ''
+	`splash_image` varchar(200) not null default '',
 	PRIMARY KEY(`job_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
