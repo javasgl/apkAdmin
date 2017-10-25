@@ -3,7 +3,7 @@ CREATE USER 'apkAdmin'@'%';
 CREATE DATABASE IF NOT EXISTS apkAdmin; 
 GRANT ALL ON apkAdmin.* TO 'apkAdmin'@'%' IDENTIFIED BY '123456';
 
-## create table login_user
+## create table apk_users
 USE apkAdmin;
 CREATE TABLE IF NOT EXISTS  `apk_users`(
 	`user_id` int unsigned not null AUTO_INCREMENT,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS  `apk_users`(
 	UNIQUE KEY `username` (`username`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-## create tables apk_channel
+## create table apk_channels
 USE apkAdmin;
 CREATE TABLE IF NOT EXISTS `apk_channels`(
 	`channel_id` int unsigned not null AUTO_INCREMENT,
@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `apk_channels`(
 	UNIQUE KEY `channel` (`channel`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+## create table apk_jobs
 USE apkAdmin;
 CREATE TABLE IF NOT EXISTS `apk_jobs`(
 	`job_id` int unsigned not null AUTO_INCREMENT,
