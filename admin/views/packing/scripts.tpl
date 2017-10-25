@@ -1,6 +1,6 @@
 <script type="text/javascript">
 	new Vue({
-		el:'#channel',
+		el:'#packing',
 		methods:{
 			handleCheckAllChange:function(event){
 				this.form.checkedChannels = event.target.checked ? this.channels : [];
@@ -32,23 +32,31 @@
 
 				});
 
+			},
+			navi:function(index){
+
+					console.log(index)
+					location.href=index
 			}
 		},
 		mounted:function(){
 			axios.get('/dashboard/getJobs').then((res)=>{
 				this.jobs = res.data.jobs
 			});
+			axios.get('/dashboard/getChannels').then((res)=>{
+				for (index in res.data.channels){
+					Vue.set(this.channels,index,res.data.channels[index].channel)
+				}
+			});
 		},
 		data:{
 			activeNames:['1','2'],
-			channels:[
-			'a','b','c'
-			],
+			channels:[],
 			checkAll:true,
 			isIndeterminate:true,
 			icon:'#',
 			form:{
-				checkedChannels:['a','c'],
+				checkedChannels:[],
 				apkVersion:''
 			},
 			jobs:[],

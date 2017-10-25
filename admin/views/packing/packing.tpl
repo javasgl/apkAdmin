@@ -1,4 +1,4 @@
-<div id="channel">
+<div id="packing">
 	<el-row>
 		<el-col :span="4">
 			<el-menu mode="horizontal" theme="dark">
@@ -8,9 +8,9 @@
 			</el-menu>
 		</el-col>
 		<el-col :span="20">
-			<el-menu mode="horizontal" theme="dark" default-active="1">
-				<el-menu-item index="1">packing center</el-menu-item>
-				<el-menu-item index="2">channel manage</el-menu-item>
+			<el-menu mode="horizontal" theme="dark" default-active="/dashboard/packing" @select="navi">
+				<el-menu-item index="/dashboard/packing">packing center</el-menu-item>
+				<el-menu-item index="/dashboard/channel">channel manage</el-menu-item>
 			</el-menu>
 		</el-col>
 	</el-row>
@@ -21,7 +21,7 @@
 					<el-row>
 						<el-col :span="8">
 							<div>
-								{{new Date()}}
+								当前时间:{{new Date().toLocaleString()}}
 							</div>
 						</el-col>
 						<el-col :span="8">

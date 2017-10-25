@@ -9,15 +9,19 @@ CREATE TABLE IF NOT EXISTS  `login_user`(
 	`user_id` int unsigned not null AUTO_INCREMENT,
 	`username` varchar(100) not null default '',
 	`password` varchar(50) not null default '',
-	PRIMARY KEY(`user_id`)
+	PRIMARY KEY(`user_id`),
+	UNIQUE KEY `username` (`username`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 ## create tables apk_channel
 USE apkAdmin;
 CREATE TABLE IF NOT EXISTS `apk_channel`(
-	`channelId` int unsigned not null default 0,
+	`channel_id` int unsigned not null AUTO_INCREMENT,
 	`channel` varchar(50) not null default '',
-	PRIMARY KEY(`channelId`)
+	`remark` varchar(100) not null default '',
+	`create_time` int unsigned not null default 0,
+	PRIMARY KEY(`channel_id`),
+	UNIQUE KEY `channel` (`channel`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 USE apkAdmin;
