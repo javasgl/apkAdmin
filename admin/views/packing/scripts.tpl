@@ -85,7 +85,8 @@
 				releaseType: 0,
 				checkedChannels:[],
 				apkVersion:'',
-				appName:''
+				appName:'',
+				splashImage:''
 			},
 			jobs:[],
 		}

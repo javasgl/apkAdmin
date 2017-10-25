@@ -15,6 +15,9 @@ const (
 
 type PackingJobs struct {
 	JobId           int      `json:"-" orm:"PK"`
+	AppId           int      `json:"appId"`
+	ReleaseType     int      `json:"releaseType"`
+	AppName         string   `json:"appName"`
 	ApkVersion      string   `json:"apkVersion" orm:"size(20)"`
 	CheckedChannels []string `json:"checkedChannels" orm:"-"`
 	ApkChannel      string   `json:"-"`
@@ -22,6 +25,7 @@ type PackingJobs struct {
 	CreatorId       int      `json:"createId"`
 	Status          int      `json:"status"`
 	DownloadUrl     string   `orm:"size(100)" json:"downloadUrl`
+	SplashImage     string   `json:"splashImage"`
 }
 
 func (c *PackingJobs) TableName() string {
@@ -36,7 +40,7 @@ func AddPackingJob(packJob PackingJobs) bool {
 
 	beego.Debug(packJob)
 
-	// orm.NewOrm().Insert(&packJob)
+	orm.NewOrm().Insert(&packJob)
 
 	GetPackingJobs(1, 20)
 
