@@ -5,7 +5,7 @@ GRANT ALL ON apkAdmin.* TO 'apkAdmin'@'%' IDENTIFIED BY '123456';
 
 ## create table login_user
 USE apkAdmin;
-CREATE TABLE IF NOT EXISTS  `login_user`(
+CREATE TABLE IF NOT EXISTS  `apk_users`(
 	`user_id` int unsigned not null AUTO_INCREMENT,
 	`username` varchar(100) not null default '',
 	`password` varchar(50) not null default '',
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS  `login_user`(
 
 ## create tables apk_channel
 USE apkAdmin;
-CREATE TABLE IF NOT EXISTS `apk_channel`(
+CREATE TABLE IF NOT EXISTS `apk_channels`(
 	`channel_id` int unsigned not null AUTO_INCREMENT,
 	`channel` varchar(50) not null default '',
 	`remark` varchar(100) not null default '',
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `apk_channel`(
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 USE apkAdmin;
-CREATE TABLE IF NOT EXISTS `packing_jobs`(
+CREATE TABLE IF NOT EXISTS `apk_jobs`(
 	`job_id` int unsigned not null AUTO_INCREMENT,
 	`apk_version` varchar(20) not null default '',
 	`apk_channel` varchar(1000) not null default '',

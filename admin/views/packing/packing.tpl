@@ -26,8 +26,21 @@
 						</el-col>
 						<el-col :span="8">
 							<el-form label-width="80px">
+								<el-form-item label="选择应用">
+									<el-radio-group v-model="form.appId">
+										<el-radio v-for="app in apps" :label="app.appId">{{app.app}}</el-radio>
+									</el-radio-group>
+								</el-form-item>
+								<el-form-item label="发布类型">
+									<el-radio-group v-model="form.releaseType">
+										<el-radio v-for="type in releaseTypes" :label="type.typeId">{{type.type}}</el-radio>
+									</el-radio-group>
+								</el-form-item>
 								<el-form-item label="版本号">
-									<el-input v-model="form.apkVersion" placeholder="eg: 8.2.6"></el-input>
+									<el-input v-model="form.apkVersion" placeholder="例如: 8.2.6"></el-input>
+								</el-form-item>
+								<el-form-item label="应用名">
+									<el-input v-model="form.appName" placeholder="例如: icy"></el-input>
 								</el-form-item>
 								<el-form-item label="渠道">
 									<el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>

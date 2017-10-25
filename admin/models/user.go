@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/javasgl/apkAdmin/admin/utils"
 
@@ -9,26 +10,34 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type LoginUser struct {
+const (
+	TABLE_USER = "apk_users"
+)
+
+type User struct {
 	UserId   int    `orm:"PK"`
 	Username string `orm:"size(100)"`
 	Password string `orm:"size(50)"`
 }
 
-func init() {
-	orm.RegisterModel(new(LoginUser))
+func (c *User) TableName() string {
+	return TABLE_USER
 }
 
-func GetUserId(user LoginUser) {
+func init() {
+	orm.RegisterModel(new(User))
+}
+
+func GetUserId(user User) {
 
 	beego.Debug(user)
 	o := orm.NewOrm()
 	o.Insert(&user)
 }
 
-func Login(user LoginUser) (res orm.Params, err error) {
+func Login(user User) (res orm.Params, err error) {
 	result := make(orm.Params)
-	orm.NewOrm().Raw("SELECT user_id,username FROM login_user WHERE username=? AND password=?", user.Username, utils.String2md5(user.Password)).RowsToMap(&result, "username", "user_id")
+	orm.NewOrm().Raw(fmt.Sprintf("SELECT user_id,username FROM %s WHERE username=? AND password=?", TABLE_USER), user.Username, utils.String2md5(user.Password)).RowsToMap(&result, "username", "user_id")
 
 	if _, ok := result[user.Username]; !ok {
 		return nil, errors.New("user not exists")

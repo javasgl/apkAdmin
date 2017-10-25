@@ -22,7 +22,7 @@ func (this *MainController) Get() {
 }
 func (this *MainController) DoLogin() {
 
-	var loginUser models.LoginUser
+	var loginUser models.User
 	json.Unmarshal(this.Ctx.Input.RequestBody, &loginUser)
 
 	loginRes, _ := models.Login(loginUser)

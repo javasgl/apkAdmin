@@ -12,6 +12,7 @@
 				this.isIndeterminate = checkedCount > 0 && checkedCount < this.channels.length;
 			},
 			packing:function(){
+				debugger
 				if(!this.form.apkVersion){
 					this.$notify({
 						title: 'Tips',
@@ -51,13 +52,40 @@
 		},
 		data:{
 			activeNames:['1','2'],
+			apps:[
+				{
+					appId:1,
+					app:'穿衣助手'
+				},
+				{
+					appId:3,
+					app:'ICY'
+				}
+			],
+			releaseTypes:[
+				{
+					typeId:0,
+					type:'默认'
+				},
+				{
+					typeId:1,
+					type:'首发'
+				},
+				{
+					typeId:2,
+					type:'活动'
+				}
+			],
 			channels:[],
 			checkAll:true,
 			isIndeterminate:true,
 			icon:'#',
 			form:{
+				appId:1,
+				releaseType: 0,
 				checkedChannels:[],
-				apkVersion:''
+				apkVersion:'',
+				appName:''
 			},
 			jobs:[],
 		}

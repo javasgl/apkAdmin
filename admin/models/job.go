@@ -1,11 +1,16 @@
 package models
 
 import (
+	"fmt"
 	"strings"
 	"time"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
+)
+
+const (
+	TABLE_JOB = "apk_jobs"
 )
 
 type PackingJobs struct {
@@ -17,6 +22,10 @@ type PackingJobs struct {
 	CreatorId       int      `json:"createId"`
 	Status          int      `json:"status"`
 	DownloadUrl     string   `orm:"size(100)" json:"downloadUrl`
+}
+
+func (c *PackingJobs) TableName() string {
+	return TABLE_JOB
 }
 
 func AddPackingJob(packJob PackingJobs) bool {
@@ -36,7 +45,7 @@ func AddPackingJob(packJob PackingJobs) bool {
 
 func GetPackingJobs(page, size int) []PackingJobs {
 	var jobs []PackingJobs
-	orm.NewOrm().Raw("SELECT * FROM packing_jobs ORDER BY create_time DESC LIMIT ?,?", (page-1)*size, size).QueryRows(&jobs)
+	orm.NewOrm().Raw(fmt.Sprintf("SELECT * FROM %s ORDER BY create_time DESC LIMIT ?,?", TABLE_JOB), (page-1)*size, size).QueryRows(&jobs)
 	for index, job := range jobs {
 		if job.ApkChannel != "" {
 			jobs[index].CheckedChannels = strings.Split(job.ApkChannel, ",")

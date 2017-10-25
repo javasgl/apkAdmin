@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	TABLE_CHANNEL = "apk_channel"
+	TABLE_CHANNEL = "apk_channels"
 )
 
 type Channel struct {
