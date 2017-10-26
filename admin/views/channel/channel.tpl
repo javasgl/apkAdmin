@@ -47,6 +47,11 @@
 						<el-table-column prop="channel" label="渠道"></el-table-column>
 						<el-table-column prop="remark" label="备注"></el-table-column>
 						<el-table-column prop="createTime" label="日期"></el-table-column>
+						<el-table-column label="操作">
+							<template scope="scope">
+								<el-button size="small" type="danger" @click="delChannel(scope.$index,scope.row)">删除</el-button>
+							</template>
+						</el-table-column>
 					</el-table>
 				</el-collapse-item>
 			</el-collapse>

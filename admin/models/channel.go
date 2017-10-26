@@ -55,3 +55,11 @@ func GetChannels() []Channel {
 	}
 	return channels
 }
+
+func DelChannel(channel Channel) bool {
+	_, err := orm.NewOrm().Delete(&channel)
+	if err != nil {
+		return false
+	}
+	return true
+}

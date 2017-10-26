@@ -21,6 +21,7 @@ func init() {
 	beego.Router("/dashboard/channel", &controllers.ChannelController{})
 	beego.Router("/dashboard/addChannel", &controllers.ChannelController{}, "post:AddChannel")
 	beego.Router("/dashboard/getChannels", &controllers.ChannelController{}, "get:GetChannels")
+	beego.Router("/dashboard/delChannel", &controllers.ChannelController{}, "post:DelChannel")
 
 	var FilterUser = func(ctx *context.Context) {
 

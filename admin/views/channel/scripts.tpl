@@ -25,6 +25,23 @@
 				axios.post('/dashboard/addChannel/',this.form).then(function(res){
 					location.reload(true)
 				});
+			},
+			delChannel:function(index,channel){
+				this.$confirm('确认要删除 '+channel.channel+' 渠道?', '提示', {
+					confirmButtonText: '确定',
+					cancelButtonText: '取消',
+					type: 'warning'
+				}).then(() => {
+					axios.post('/dashboard/delChannel',{channelId:channel.channelId}).then((res)=>{
+						this.channels.splice(index,1)
+						this.$message({
+							type: 'success',
+							message: '删除成功!'
+						});
+					});
+				}).catch(() => {
+				});
+
 			}
 		},
 		mounted:function(){

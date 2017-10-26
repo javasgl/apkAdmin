@@ -41,3 +41,13 @@ func (this *ChannelController) GetChannels() {
 	this.Data["json"] = res
 	this.ServeJSON()
 }
+
+func (this *ChannelController) DelChannel() {
+	var channel models.Channel
+	json.Unmarshal(this.Ctx.Input.RequestBody, &channel)
+
+	models.DelChannel(channel)
+
+	this.Data["json"] = channel
+	this.ServeJSON()
+}
