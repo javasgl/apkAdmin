@@ -11,6 +11,9 @@
 						that.$notify.error('用户名密码不正确~');
 					}
 				});
+			},
+			goRegister:function(){
+				location.href="/register"
 			}
 		},
 		data:{
