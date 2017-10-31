@@ -12,8 +12,12 @@ CREATE TABLE IF NOT EXISTS  `apk_users`(
 	`user_id` int unsigned not null AUTO_INCREMENT,
 	`username` varchar(100) not null default '',
 	`password` varchar(50) not null default '',
+	`email` varchar(50) not null default '',
+	`validated` tinyint unsigned not null default 0,
+	`validate_token` varchar(100) not null default '',
 	PRIMARY KEY(`user_id`),
-	UNIQUE KEY `username` (`username`)
+	UNIQUE KEY `username` (`username`),
+	UNIQUE KEY `email` (`email`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 ## create table apk_channels
