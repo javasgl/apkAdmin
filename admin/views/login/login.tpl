@@ -1,6 +1,6 @@
   <div id="login">
     <el-form label-position="left" label-width="0px" class="login-container">
-      <h3 class="title">apk packging system</h3>
+      <h3 class="title">apk packing system</h3>
       <el-form-item prop="username">
         <el-input type="text" v-model="username" auto-complete="off" placeholder="账号"></el-input>
       </el-form-item>

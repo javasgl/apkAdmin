@@ -1,6 +1,6 @@
 <div id="register">
 	<el-form label-position="left" label-width="0px" class="login-container">
-		<h3 class="title">apk packging system</h3>
+		<h3 class="title">apk packing system</h3>
 		<el-form-item prop="username">
 			<el-input type="text" v-model="username" auto-complete="off" placeholder="请填写企业邮箱">
 				<template slot="append"><?.registerMail?></template>
