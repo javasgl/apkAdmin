@@ -48,6 +48,8 @@ func (this *MainController) DoRegister() {
 	var regiserUser models.User
 	json.Unmarshal(this.Ctx.Input.RequestBody, &regiserUser)
 
+	models.Register(regiserUser)
+
 	beego.Debug(regiserUser)
 
 	this.ServeJSON()

@@ -3,6 +3,7 @@ package models
 import (
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/javasgl/apkAdmin/admin/utils"
 
@@ -15,9 +16,13 @@ const (
 )
 
 type User struct {
-	UserId   int    `orm:"PK"`
-	Username string `orm:"size(100)"`
-	Password string `orm:"size(50)"`
+	UserId        int    `orm:"PK"`
+	Username      string `orm:"size(100)"`
+	Password      string `orm:"size(50)"`
+	Email         string `orm:"size(50)"`
+	Validated     byte
+	ValidateToken string
+	RegisterTime  int64
 }
 
 func (c *User) TableName() string {
@@ -26,6 +31,27 @@ func (c *User) TableName() string {
 
 func init() {
 	orm.RegisterModel(new(User))
+}
+
+func Register(user User) bool {
+	var count int
+	orm.NewOrm().Raw(fmt.Sprintf("SELECT COUNT(1) AS count FROM %s WHERE username=?", TABLE_USER), user.Username).QueryRow(&count)
+	if count > 0 {
+		return false
+	}
+	user.Email = user.Username + "@" + beego.AppConfig.String("apk::registerMail")
+	user.Password = utils.String2md5(user.Password)
+	user.Validated = 0
+	user.ValidateToken = ""
+	user.RegisterTime = time.Now().Unix()
+
+	beego.Debug(user)
+	_, err := orm.NewOrm().Insert(&user)
+
+	if err != nil {
+		return false
+	}
+	return true
 }
 
 func GetUserId(user User) {

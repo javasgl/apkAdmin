@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS  `apk_users`(
 	`email` varchar(50) not null default '',
 	`validated` tinyint unsigned not null default 0,
 	`validate_token` varchar(100) not null default '',
+	`register_time` int unsigned not null default 0,
 	PRIMARY KEY(`user_id`),
 	UNIQUE KEY `username` (`username`),
 	UNIQUE KEY `email` (`email`)
