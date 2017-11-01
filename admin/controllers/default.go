@@ -13,6 +13,11 @@ type MainController struct {
 }
 
 func (this *MainController) Get() {
+
+	if models.ValidateToken(this.Ctx) {
+		this.Ctx.Redirect(302, "/dashboard/packing")
+	}
+
 	this.Layout = "layout.tpl"
 	this.TplName = "login/login.tpl"
 	this.LayoutSections = make(map[string]string)

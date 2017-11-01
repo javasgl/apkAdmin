@@ -14,8 +14,6 @@ var (
 )
 
 func Init() {
-	beego.Debug("初始化.....")
-
 	if beego.AppConfig.String("runmode") == "dev" {
 		orm.Debug = true
 	}
@@ -36,7 +34,6 @@ func initCustomConfig() {
 
 func initDBConn() {
 
-	beego.Debug("初始化-数据库")
 	dbhost := beego.AppConfig.String("db::host")
 	dbport := beego.AppConfig.String("db::port")
 	dbuser := beego.AppConfig.String("db::user")
