@@ -54,8 +54,6 @@ func (this *MainController) Register() {
 	this.Layout = "layout.tpl"
 	this.TplName = "register/register.tpl"
 	this.LayoutSections = make(map[string]string)
-	this.LayoutSections["HtmlHeader"] = "register/header.tpl"
-	this.LayoutSections["HtmlBody"] = "register/register.tpl"
 	this.LayoutSections["HtmlScripts"] = "register/scripts.tpl"
 }
 
