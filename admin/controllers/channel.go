@@ -18,8 +18,6 @@ func (this *ChannelController) Get() {
 	this.Layout = "layout.tpl"
 	this.TplName = "channel/channel.tpl"
 	this.LayoutSections = make(map[string]string)
-	this.LayoutSections["HtmlHeader"] = "channel/header.tpl"
-	this.LayoutSections["HtmlBody"] = "channel/channel.tpl"
 	this.LayoutSections["HtmlScripts"] = "channel/scripts.tpl"
 }
 

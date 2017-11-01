@@ -18,8 +18,6 @@ func (this *PackingController) Get() {
 	this.Layout = "layout.tpl"
 	this.TplName = "packing/packing.tpl"
 	this.LayoutSections = make(map[string]string)
-	this.LayoutSections["HtmlHeader"] = "packing/header.tpl"
-	this.LayoutSections["HtmlBody"] = "packing/packing.tpl"
 	this.LayoutSections["HtmlScripts"] = "packing/scripts.tpl"
 }
 

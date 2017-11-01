@@ -1,3 +1,8 @@
+<style type="text/css">
+	.el-input > input{
+		max-width: 193px
+	}
+</style>
 <div id="packing">
 	<el-row>
 		<el-col :span="4">
