@@ -1,4 +1,4 @@
-package utils
+package models
 
 import (
 	"crypto/md5"
@@ -18,7 +18,8 @@ func GenerateToken(username string) string {
 }
 
 func ValidateToken(ctx *context.Context) bool {
-	session := ctx.Input.CruSession.Get("apkuser")
+	session := ctx.Input.CruSession.Get(SessionKey)
+
 	if session != nil {
 		return true
 	}

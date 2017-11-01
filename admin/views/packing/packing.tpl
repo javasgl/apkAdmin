@@ -7,10 +7,18 @@
 				</el-menu-item>
 			</el-menu>
 		</el-col>
-		<el-col :span="20">
+		<el-col :span="18">
 			<el-menu mode="horizontal" theme="dark" default-active="/dashboard/packing" @select="navi">
 				<el-menu-item index="/dashboard/packing">packing center</el-menu-item>
 				<el-menu-item index="/dashboard/channel">channel manage</el-menu-item>
+			</el-menu>
+		</el-col>
+		<el-col :span="2">
+			<el-menu mode="horizontal" theme="dark">
+				<el-submenu index="2">
+					<template slot="title">我的工作台</template>
+					<el-menu-item index="2-3">退出登录</el-menu-item>
+				</el-submenu>
 			</el-menu>
 		</el-col>
 	</el-row>

@@ -2,3 +2,4 @@ mysql/datadir/*
 !mysql/datadir/.gitignore
 admin/admin
 .idea
+.DS_Store

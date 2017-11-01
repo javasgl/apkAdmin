@@ -13,7 +13,6 @@ type PackingController struct {
 }
 
 func (this *PackingController) Get() {
-	beego.Debug("channel::get")
 	this.Layout = "layout.tpl"
 	this.TplName = "packing/packing.tpl"
 	this.LayoutSections = make(map[string]string)

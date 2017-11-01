@@ -26,16 +26,20 @@ func (this *MainController) DoLogin() {
 	var loginUser models.User
 	json.Unmarshal(this.Ctx.Input.RequestBody, &loginUser)
 
-	loginRes, _ := models.Login(loginUser)
-	if loginRes != nil {
-		this.SetSession("apkuser", loginRes)
+	loginRes, err := models.Login(loginUser)
+
+	if err != nil {
+		this.Data["json"] = 0
+		this.DelSession(models.SessionKey)
+	} else {
+		this.Data["json"] = 1
+		this.SetSession(models.SessionKey, loginRes)
 	}
-	this.Data["json"] = loginRes
 	this.ServeJSON()
 }
 
 func (this *MainController) Register() {
-	this.Data["registerMail"] = "@" + beego.AppConfig.String("apk::registerMail")
+	this.Data["registerMail"] = "@" + models.RegisterMail
 	this.Layout = "layout.tpl"
 	this.TplName = "register/register.tpl"
 	this.LayoutSections = make(map[string]string)

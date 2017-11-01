@@ -1,11 +1,8 @@
 package models
 
 import (
-	"errors"
 	"fmt"
 	"time"
-
-	"github.com/javasgl/apkAdmin/admin/utils"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -39,8 +36,8 @@ func Register(user User) bool {
 	if count > 0 {
 		return false
 	}
-	user.Email = user.Username + "@" + beego.AppConfig.String("apk::registerMail")
-	user.Password = utils.String2md5(user.Password)
+	user.Email = user.Username + "@" + RegisterMail
+	user.Password = String2md5(user.Password)
 	user.Validated = 0
 	user.ValidateToken = ""
 	user.RegisterTime = time.Now().Unix()
@@ -61,12 +58,7 @@ func GetUserId(user User) {
 	o.Insert(&user)
 }
 
-func Login(user User) (res orm.Params, err error) {
-	result := make(orm.Params)
-	orm.NewOrm().Raw(fmt.Sprintf("SELECT user_id,username FROM %s WHERE username=? AND password=?", TABLE_USER), user.Username, utils.String2md5(user.Password)).RowsToMap(&result, "username", "user_id")
-
-	if _, ok := result[user.Username]; !ok {
-		return nil, errors.New("user not exists")
-	}
-	return result, nil
+func Login(user User) (res User, err error) {
+	err = orm.NewOrm().Raw(fmt.Sprintf("SELECT user_id,username,email,validated FROM %s WHERE username=? AND password=?", TABLE_USER), user.Username, String2md5(user.Password)).QueryRow(&res)
+	return res, err
 }
