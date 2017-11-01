@@ -14,6 +14,7 @@ type ChannelController struct {
 
 func (this *ChannelController) Get() {
 
+	this.Data["loginUser"] = this.GetSession(models.SessionKey)
 	this.Layout = "layout.tpl"
 	this.TplName = "channel/channel.tpl"
 	this.LayoutSections = make(map[string]string)

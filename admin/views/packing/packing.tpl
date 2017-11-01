@@ -16,8 +16,8 @@
 		<el-col :span="2">
 			<el-menu mode="horizontal" theme="dark">
 				<el-submenu index="2">
-					<template slot="title">我的工作台</template>
-					<el-menu-item index="2-3">退出登录</el-menu-item>
+					<template slot="title"><?.loginUser.Username?></template>
+					<el-menu-item @click="loginout">退出登录</el-menu-item>
 				</el-submenu>
 			</el-menu>
 		</el-col>

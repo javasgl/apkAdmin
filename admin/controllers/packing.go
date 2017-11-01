@@ -13,6 +13,8 @@ type PackingController struct {
 }
 
 func (this *PackingController) Get() {
+
+	this.Data["loginUser"] = this.GetSession(models.SessionKey)
 	this.Layout = "layout.tpl"
 	this.TplName = "packing/packing.tpl"
 	this.LayoutSections = make(map[string]string)

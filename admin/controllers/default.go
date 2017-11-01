@@ -42,6 +42,14 @@ func (this *MainController) DoLogin() {
 	}
 	this.ServeJSON()
 }
+func (this *MainController) Loginout() {
+
+	this.DelSession(models.SessionKey)
+
+	this.Data["json"] = 1
+
+	this.ServeJSON()
+}
 
 func (this *MainController) Register() {
 	this.Data["registerMail"] = "@" + models.RegisterMail
