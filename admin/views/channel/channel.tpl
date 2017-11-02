@@ -5,7 +5,6 @@
 </style>
 
 <div id="channel">
-	<?template "navibar.tpl" .?>
 	<el-row>
 		<el-col>
 			<el-collapse v-model="activeNames">

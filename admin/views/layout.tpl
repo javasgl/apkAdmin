@@ -8,10 +8,35 @@
 </head>
 
 <body>
-	<?.LayoutContent?>
+	<div id="navi-bar">
+		<?template "navibar.tpl" .?>
+	</div>
+	<div>
+		<?.LayoutContent?>
+	</div>
 </body>
 <script type="text/javascript" src="/static/js/vuejs/vue.js"></script>
 <script type="text/javascript" src="/static/js/element-ui/index.js"></script>
 <script type="text/javascript" src="/static/js/axios/axios.min.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el:"#navi-bar",
+		method:{
+			navi:function(index){
+				console.log(index)
+				location.href=index
+			},
+			loginout:function(){
+				axios.post('/dashboard/loginout').then((res)=>{
+					if(res){
+						location.href="/"
+						return;
+					}
+				});
+			}
+		},
+		data:{}
+	});
+</script>
 <?.HtmlScripts?>
 </html>

@@ -4,7 +4,6 @@
 	}
 </style>
 <div id="packing">
-	<?template "navibar.tpl" .?>
 	<el-row>
 		<el-col>
 			<el-collapse v-model="activeNames">

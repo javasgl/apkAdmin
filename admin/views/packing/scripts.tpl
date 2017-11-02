@@ -34,19 +34,6 @@
 				});
 
 			},
-			navi:function(index){
-
-					console.log(index)
-					location.href=index
-			},
-			loginout:function(){
-				axios.post('/dashboard/loginout').then((res)=>{
-					if(res){
-						location.href="/"
-						return;
-					}
-				});
-			}
 		},
 		mounted:function(){
 			axios.get('/dashboard/getJobs').then((res)=>{
