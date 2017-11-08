@@ -46,8 +46,10 @@ func (this *PackingController) AddJob() {
 
 func (this *PackingController) GetJobs() {
 
-	res := make(map[string][]models.PackingJobs)
-	res["jobs"] = models.GetPackingJobs(1, 20)
+	res := make(map[string]interface{})
+
+	res["jobs"] = models.GetJobsWithUser(1, 20)
+
 	this.Data["json"] = res
 	this.ServeJSON()
 }

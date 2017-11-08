@@ -49,7 +49,11 @@
 				<el-collapse-item title="历史记录(最近20条)" name="2">
 					<el-table :data="jobs">
 						<el-table-column prop="createTime" label="日期"></el-table-column>
-						<el-table-column prop="creatorId" label="操作人"></el-table-column>
+						<el-table-column prop="creatorId" label="操作人">
+							<template scope="scope">
+								{{scope.row.username}}
+							</template>
+						</el-table-column>
 						<el-table-column prop="appId" label="应用">
 							<template scope="scope">
 								<span v-if="scope.row.appId==3">ICY</span>

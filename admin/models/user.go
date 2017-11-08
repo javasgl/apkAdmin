@@ -13,8 +13,8 @@ const (
 )
 
 type User struct {
-	UserId        int    `orm:"PK"`
-	Username      string `orm:"size(100)"`
+	UserId        int    `orm:"PK" json:"userId"`
+	Username      string `orm:"size(100)" json:"username"`
 	Password      string `orm:"size(50)"`
 	Email         string `orm:"size(50)"`
 	Validated     byte
@@ -49,13 +49,6 @@ func Register(user User) bool {
 		return false
 	}
 	return true
-}
-
-func GetUserId(user User) {
-
-	beego.Debug(user)
-	o := orm.NewOrm()
-	o.Insert(&user)
 }
 
 func Login(user User) (res User, err error) {

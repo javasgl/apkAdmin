@@ -25,6 +25,7 @@ type PackingJobs struct {
 	Status          int    `json:"status"`
 	DownloadUrl     string `orm:"size(100)" json:"downloadUrl`
 	SplashImage     string `json:"splashImage"`
+	Username        string `json:"username"`
 }
 
 func (c *PackingJobs) TableName() string {
@@ -46,9 +47,23 @@ func AddPackingJob(packJob PackingJobs) bool {
 
 func GetPackingJobs(page, size int) []PackingJobs {
 	var jobs []PackingJobs
-	orm.NewOrm().Raw(fmt.Sprintf("SELECT * FROM %s ORDER BY create_time DESC LIMIT ?,?", TABLE_JOB), (page-1)*size, size).QueryRows(&jobs)
+	orm.NewOrm().Raw(fmt.Sprintf("SELECT * FROM `%s` ORDER BY `create_time` DESC LIMIT ?,?", TABLE_JOB), (page-1)*size, size).QueryRows(&jobs)
 	return jobs
 }
+
+func GetJobsWithUser(page, size int) []PackingJobs {
+
+	sql := "SELECT jobs.*,users.username FROM `%s` jobs LEFT JOIN `%s` users ON jobs.creator_id=users.user_id ORDER BY `create_time` DESC LIMIT ?,?"
+
+	sql = fmt.Sprintf(sql, TABLE_JOB, TABLE_USER)
+
+	var jobs []PackingJobs
+
+	orm.NewOrm().Raw(sql, (page-1)*size, size).QueryRows(&jobs)
+
+	return jobs
+}
+
 func init() {
 	orm.RegisterModel(new(PackingJobs))
 }
