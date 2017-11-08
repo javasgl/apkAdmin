@@ -37,7 +37,7 @@ func Register(user User) bool {
 		return false
 	}
 	user.Email = user.Username + "@" + RegisterMail
-	user.Password = String2md5(user.Password)
+	user.Password = String2md5(user.Username + PasswordSalt + user.Password)
 	user.Validated = 0
 	user.ValidateToken = ""
 	user.RegisterTime = time.Now().Unix()
@@ -59,6 +59,6 @@ func GetUserId(user User) {
 }
 
 func Login(user User) (res User, err error) {
-	err = orm.NewOrm().Raw(fmt.Sprintf("SELECT user_id,username,email,validated FROM %s WHERE username=? AND password=?", TABLE_USER), user.Username, String2md5(user.Password)).QueryRow(&res)
+	err = orm.NewOrm().Raw(fmt.Sprintf("SELECT user_id,username,email,validated FROM %s WHERE username=? AND password=?", TABLE_USER), user.Username, String2md5(user.Username+PasswordSalt+user.Password)).QueryRow(&res)
 	return res, err
 }

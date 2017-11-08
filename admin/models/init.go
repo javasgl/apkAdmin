@@ -11,6 +11,7 @@ import (
 var (
 	SessionKey   string
 	RegisterMail string
+	PasswordSalt string
 )
 
 func Init() {
@@ -30,6 +31,7 @@ func initCustomConfig() {
 
 	RegisterMail = beego.AppConfig.String("apk::registerMail")
 
+	PasswordSalt = beego.AppConfig.String("apk::passwordSalt")
 }
 
 func initDBConn() {
