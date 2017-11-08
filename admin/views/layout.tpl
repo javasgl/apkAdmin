@@ -21,7 +21,7 @@
 <script type="text/javascript">
 	new Vue({
 		el:"#navi-bar",
-		method:{
+		methods:{
 			navi:function(index){
 				console.log(index)
 				location.href=index
