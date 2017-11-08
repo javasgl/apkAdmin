@@ -35,7 +35,7 @@
 								<el-form-item label="渠道">
 									<el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
 									<el-checkbox-group v-model="form.checkedChannels" @change="handleCheckedChannelsChange">
-										<el-checkbox v-for="channel in channels" :label="channel" :key="channel">{{channel}}</el-checkbox>
+										<el-checkbox v-for="channel in channels" :label="channel.channelId" :key="channel.channelId">{{channel.channel}}</el-checkbox>
 									</el-checkbox-group>
 								</el-form-item>
 								<el-form-item label="">

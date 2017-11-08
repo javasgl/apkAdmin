@@ -3,8 +3,14 @@
 		el:'#packing',
 		methods:{
 			handleCheckAllChange:function(event){
-				this.form.checkedChannels = event.target.checked ? this.channels : [];
-				this.isIndeterminate = false;	
+				if(event.target.checked){
+					for (index in this.channels){
+						Vue.set(this.form.checkedChannels,index,this.channels[index].channelId)
+					}
+				}else{
+					this.form.checkedChannels =  [];
+				}
+				this.isIndeterminate = false;
 			},
 			handleCheckedChannelsChange(value) {
 				let checkedCount = value.length;
@@ -41,7 +47,7 @@
 			});
 			axios.get('/dashboard/getChannels').then((res)=>{
 				for (index in res.data.channels){
-					Vue.set(this.channels,index,res.data.channels[index].channel)
+					Vue.set(this.channels,index,res.data.channels[index])
 				}
 			});
 		},
