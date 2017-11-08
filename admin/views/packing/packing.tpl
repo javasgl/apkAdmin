@@ -48,7 +48,11 @@
 				</el-collapse-item>
 				<el-collapse-item title="历史记录(最近20条)" name="2">
 					<el-table :data="jobs">
-						<el-table-column prop="createTime" label="日期"></el-table-column>
+						<el-table-column prop="createTime" label="日期">
+							<template scope="scope">
+								{{scope.row.createTime|dateformat}}
+							</template>
+						</el-table-column>
 						<el-table-column prop="creatorId" label="操作人">
 							<template scope="scope">
 								{{scope.row.username}}
