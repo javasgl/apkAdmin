@@ -9,7 +9,9 @@
 
 <body>
 	<div id="navi-bar">
+		<?if .Logged?>
 		<?template "navibar.tpl" .?>
+		<?end?>
 	</div>
 	<div>
 		<?.LayoutContent?>
@@ -35,7 +37,9 @@
 				});
 			}
 		},
-		data:{}
+		data:{
+			activedMenu: <?.ActivedMenu?>
+		}
 	});
 </script>
 <?.HtmlScripts?>

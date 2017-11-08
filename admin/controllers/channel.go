@@ -14,6 +14,8 @@ type ChannelController struct {
 
 func (this *ChannelController) Get() {
 
+	this.Data["Logged"] = true
+	this.Data["ActivedMenu"] = "/dashboard/channel"
 	this.Data["loginUser"] = this.GetSession(models.SessionKey)
 	this.Layout = "layout.tpl"
 	this.TplName = "channel/channel.tpl"

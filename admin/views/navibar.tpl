@@ -7,7 +7,7 @@
 		</el-menu>
 	</el-col>
 	<el-col :span="18">
-		<el-menu mode="horizontal" theme="dark" default-active="/dashboard/packing" @select="navi">
+		<el-menu mode="horizontal" theme="dark" :default-active="activedMenu" @select="navi">
 			<el-menu-item index="/dashboard/packing">packing center</el-menu-item>
 			<el-menu-item index="/dashboard/channel">channel manage</el-menu-item>
 		</el-menu>

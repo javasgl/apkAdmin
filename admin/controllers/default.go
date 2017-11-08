@@ -15,6 +15,8 @@ type MainController struct {
 func (this *MainController) Get() {
 
 	if models.ValidateToken(this.Ctx) {
+		this.Data["Logged"] = true
+		this.Data["ActivedMenu"] = "/dashboard/packing"
 		this.Ctx.Redirect(302, "/dashboard/packing")
 	}
 

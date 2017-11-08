@@ -14,6 +14,8 @@ type PackingController struct {
 
 func (this *PackingController) Get() {
 
+	this.Data["Logged"] = true
+	this.Data["ActivedMenu"] = "/dashboard/packing"
 	this.Data["loginUser"] = this.GetSession(models.SessionKey)
 	this.Layout = "layout.tpl"
 	this.TplName = "packing/packing.tpl"

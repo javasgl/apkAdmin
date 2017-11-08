@@ -7,7 +7,7 @@
 	<el-row>
 		<el-col>
 			<el-collapse v-model="activeNames">
-				<el-collapse-item title="packing" name="1">
+				<el-collapse-item title="打包" name="1">
 					<el-row>
 						<el-col :span="8">
 							<div>
@@ -46,7 +46,7 @@
 						<el-col :span="8"></el-col>
 					</el-row>
 				</el-collapse-item>
-				<el-collapse-item title="history" name="2">
+				<el-collapse-item title="历史记录" name="2">
 					<el-table :data="jobs">
 						<el-table-column prop="createTime" label="日期"></el-table-column>
 						<el-table-column prop="creatorId" label="操作人"></el-table-column>
