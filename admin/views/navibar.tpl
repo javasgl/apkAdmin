@@ -16,7 +16,8 @@
 		<el-menu mode="horizontal" theme="dark">
 			<el-submenu index="2">
 				<template slot="title"><?.loginUser.Username?></template>
-				<el-menu-item index="-" @click="loginout">退出登录</el-menu-item>
+				<el-menu-item index="--"><?.loginUser.Email?></el-menu-item>
+				<el-menu-item index="-" @click="loginout">退出系统</el-menu-item>
 			</el-submenu>
 		</el-menu>
 	</el-col>
