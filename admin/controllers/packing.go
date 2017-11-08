@@ -25,10 +25,21 @@ func (this *PackingController) Get() {
 
 func (this *PackingController) AddJob() {
 
-	beego.Debug(this.GetSession("apkuser"))
-	var packJob models.PackingJobs
-	json.Unmarshal(this.Ctx.Input.RequestBody, &packJob)
-	models.AddPackingJob(packJob)
+	var packJobs models.PackingJobs
+	json.Unmarshal(this.Ctx.Input.RequestBody, &packJobs)
+
+	session, ok := this.GetSession(models.SessionKey).(models.User)
+	if !ok {
+		beego.Error("session error:", this.GetSession(models.SessionKey))
+		this.Data["json"] = "error"
+		this.ServeJSON()
+		return
+	}
+	for _, channelId := range packJobs.CheckedChannels {
+		packJobs.ApkChannel = channelId
+		packJobs.CreatorId = session.UserId
+		models.AddPackingJob(packJobs)
+	}
 	this.Data["json"] = models.GetPackingJobs(1, 30)
 	this.ServeJSON()
 }

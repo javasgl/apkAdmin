@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `apk_jobs`(
 	`release_type` int unsigned not null default 0,
 	`app_name` varchar(100) not null default '',
 	`apk_version` varchar(20) not null default '',
-	`apk_channel` varchar(1000) not null default '',
+	`apk_channel` int unsigned not null default 0,
 	`creator_id` int unsigned not null default 0,
 	`create_time` int unsigned not null default 0,
 	`status`  smallint  unsigned not null default 0,
