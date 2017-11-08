@@ -63,9 +63,10 @@ func (this *MainController) DoRegister() {
 	var regiserUser models.User
 	json.Unmarshal(this.Ctx.Input.RequestBody, &regiserUser)
 
-	models.Register(regiserUser)
-
-	beego.Debug(regiserUser)
-
+	if models.Register(regiserUser) {
+		this.Data["json"] = 1
+	} else {
+		this.Data["json"] = 0
+	}
 	this.ServeJSON()
 }

@@ -27,9 +27,12 @@
 				axios.post('/api/register',{username:this.username,password:this.password}).then((res)=>{
 
 					if(res.data){
-						location.href="/dashboard/packing";
+						this.$notify.info('注册完成,3s后将前往登录页面')
+						setTimeout(function(){
+							location.href="/dashboard/packing";
+						},3000);
 					}else{
-						this.$notify.error('用户名密码不正确~');
+						this.$notify.error('注册异常~');
 					}
 				});
 			},
