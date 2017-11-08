@@ -21,7 +21,7 @@ type PackingJobs struct {
 	CheckedChannels []int  `json:"checkedChannels" orm:"-"`
 	ApkChannel      int    `json:"-"`
 	CreateTime      int64  `json:"createTime"`
-	CreatorId       int    `json:"createId"`
+	CreatorId       int    `json:"creatorId"`
 	Status          int    `json:"status"`
 	DownloadUrl     string `orm:"size(100)" json:"downloadUrl`
 	SplashImage     string `json:"splashImage"`
