@@ -2,6 +2,14 @@
 	.el-input > input{
 		max-width: 193px
 	}
+	.splashImage{
+		display: block;
+		width: 148px;
+		height: 148px;
+		border-radius: 6px;
+		cursor: pointer;
+		box-sizing: border-box;
+	}
 </style>
 <div id="packing">
 	<el-row>
@@ -25,6 +33,19 @@
 									<el-radio-group v-model="form.releaseType">
 										<el-radio v-for="type in releaseTypes" :label="type.typeId">{{type.type}}</el-radio>
 									</el-radio-group>
+								</el-form-item>
+								<el-form-item label="闪屏图片" v-if="form.releaseType==1">
+									<el-upload
+										action="/api/upload"
+										accept="image/gif,image/jpeg,image/jpg,image/png"
+										name="splashImage"
+										list-type="picture-card"
+										:show-file-list="false"
+										:on-success="uploadSuccess"
+										>
+										 <img v-if="form.splashImage" :src="splashImage" class="splashImage">
+										 <i v-else class="el-icon-plus"></i>
+									</el-upload>
 								</el-form-item>
 								<el-form-item label="版本号">
 									<el-input v-model="form.apkVersion" placeholder="例如: 8.2.6"></el-input>

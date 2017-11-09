@@ -14,6 +14,8 @@ func init() {
 	beego.Router("/api/login", &controllers.MainController{}, "post:DoLogin")
 	beego.Router("/api/register", &controllers.MainController{}, "post:DoRegister")
 
+	beego.Router("/api/upload", &controllers.UploadController{}, "post:DoUpload")
+
 	beego.Router("/dashboard/loginout", &controllers.MainController{}, "post:Loginout")
 
 	beego.Router("/dashboard/packing", &controllers.PackingController{})

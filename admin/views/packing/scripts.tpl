@@ -40,6 +40,10 @@
 				});
 
 			},
+			uploadSuccess:function(res,file){
+				this.splashImage=URL.createObjectURL(file.raw)
+				this.form.splashImage=res.image
+			}
 		},
 		mounted:function(){
 			axios.get('/dashboard/getJobs').then((res)=>{
@@ -64,6 +68,7 @@
 			}
 		},
 		data:{
+			splashImage:'',
 			activeNames:['1','2'],
 			apps:[
 				{
