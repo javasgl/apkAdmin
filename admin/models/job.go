@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -35,8 +34,6 @@ func (c *PackingJobs) TableName() string {
 func AddPackingJob(packJob PackingJobs) bool {
 
 	packJob.CreateTime = time.Now().Unix()
-
-	beego.Debug(packJob)
 
 	orm.NewOrm().Insert(&packJob)
 
