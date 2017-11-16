@@ -96,7 +96,7 @@
 						<el-table-column prop="appName" label="应用名"></el-table-column>
 						<el-table-column prop="splashImage" label="闪屏图">
 							<template scope="scope">
-								<img :src="scope.row.splashImage|imgformat" style="width: 60%;display: block;">
+								<img :src="scope.row.splashImage|imgformat" style="width: 60%;display: block;" @click="zoomImage(scope.row)">
 							</template>
 						</el-table-column>
 						<el-table-column prop="status" label="进度">
@@ -110,4 +110,7 @@
 			</el-collapse>
 		</el-col>
 	</el-row>
+	<el-dialog v-model="zoom" size="tiny">
+		<img width="100%" height="100%" :src="zoomImageUrl" alt="">
+	</el-dialog>
 </div>

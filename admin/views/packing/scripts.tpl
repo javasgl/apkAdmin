@@ -42,6 +42,10 @@
 			uploadSuccess:function(res,file){
 				this.splashImage=URL.createObjectURL(file.raw)
 				this.form.splashImage=res.image
+			},
+			zoomImage:function(data){
+				this.zoom =true
+				this.zoomImageUrl = <?.hostname?>+data.splashImage
 			}
 		},
 		mounted:function(){
@@ -70,6 +74,8 @@
 			}
 		},
 		data:{
+			zoom:false,
+			zoomImageUrl:'',
 			splashImage:'',
 			activeNames:['1','2'],
 			apps:[
