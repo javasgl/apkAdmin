@@ -24,6 +24,21 @@ type PackingJobs struct {
 	Status          int    `json:"status"`
 	DownloadUrl     string `orm:"size(100)" json:"downloadUrl`
 	SplashImage     string `json:"splashImage"`
+}
+
+type JobList struct {
+	JobId           int    `json:"-" orm:"PK"`
+	AppId           int    `json:"appId"`
+	ReleaseType     int    `json:"releaseType"`
+	AppName         string `json:"appName"`
+	ApkVersion      string `json:"apkVersion" orm:"size(20)"`
+	CheckedChannels []int  `json:"checkedChannels" orm:"-"`
+	ApkChannel      int    `json:"-"`
+	CreateTime      int64  `json:"createTime"`
+	CreatorId       int    `json:"creatorId"`
+	Status          int    `json:"status"`
+	DownloadUrl     string `orm:"size(100)" json:"downloadUrl`
+	SplashImage     string `json:"splashImage"`
 	Username        string `json:"username"`
 }
 
@@ -48,13 +63,13 @@ func GetPackingJobs(page, size int) []PackingJobs {
 	return jobs
 }
 
-func GetJobsWithUser(page, size int) []PackingJobs {
+func GetJobsWithUser(page, size int) []JobList {
 
 	sql := "SELECT jobs.*,users.username FROM `%s` jobs LEFT JOIN `%s` users ON jobs.creator_id=users.user_id ORDER BY `create_time` DESC LIMIT ?,?"
 
 	sql = fmt.Sprintf(sql, TABLE_JOB, TABLE_USER)
 
-	var jobs []PackingJobs
+	var jobs []JobList
 
 	orm.NewOrm().Raw(sql, (page-1)*size, size).QueryRows(&jobs)
 

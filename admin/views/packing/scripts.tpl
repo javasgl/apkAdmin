@@ -18,7 +18,6 @@
 				this.isIndeterminate = checkedCount > 0 && checkedCount < this.channels.length;
 			},
 			packing:function(){
-				debugger
 				if(!this.form.apkVersion){
 					this.$notify({
 						title: 'Tips',
@@ -36,7 +35,7 @@
 					return;
 				}
 				axios.post('/dashboard/addJob/',this.form).then(function(res){
-
+					location.reload()
 				});
 
 			},
@@ -65,6 +64,9 @@
 					m = (date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes()) + ':';
 					s = (date.getSeconds()<10?'0'+date.getSeconds():date.getSeconds()) ;
 					return Y+M+D+h+m+s
+			},
+			imgformat:function(splashImage){
+				return <?.hostname?>+splashImage;
 			}
 		},
 		data:{

@@ -9,6 +9,7 @@ import (
 )
 
 var (
+	Hostname     string
 	SessionKey   string
 	RegisterMail string
 	PasswordSalt string
@@ -26,6 +27,8 @@ func Init() {
 }
 
 func initCustomConfig() {
+
+	Hostname = beego.AppConfig.String("apk::hostname")
 
 	SessionKey = beego.AppConfig.String("apk::sessionKey")
 

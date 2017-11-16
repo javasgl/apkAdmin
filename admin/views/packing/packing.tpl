@@ -94,6 +94,11 @@
 						</el-table-column>
 						<el-table-column prop="apkVersion" label="版本"></el-table-column>
 						<el-table-column prop="appName" label="应用名"></el-table-column>
+						<el-table-column prop="splashImage" label="闪屏图">
+							<template scope="scope">
+								<img :src="scope.row.splashImage|imgformat" style="width: 60%;display: block;">
+							</template>
+						</el-table-column>
 						<el-table-column prop="status" label="进度">
 							<template scope="scope">
 								<el-progress :text-inside="true" :stroke-width="24" :percentage="42"></el-progress>

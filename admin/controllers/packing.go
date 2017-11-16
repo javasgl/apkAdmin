@@ -17,6 +17,7 @@ func (this *PackingController) Get() {
 	this.Data["Logged"] = true
 	this.Data["ActivedMenu"] = "/dashboard/packing"
 	this.Data["loginUser"] = this.GetSession(models.SessionKey)
+	this.Data["hostname"] = models.Hostname
 	this.Layout = "layout.tpl"
 	this.TplName = "packing/packing.tpl"
 	this.LayoutSections = make(map[string]string)
@@ -40,7 +41,7 @@ func (this *PackingController) AddJob() {
 		packJobs.CreatorId = session.UserId
 		models.AddPackingJob(packJobs)
 	}
-	this.Data["json"] = models.GetPackingJobs(1, 30)
+	this.Data["json"] = true
 	this.ServeJSON()
 }
 
