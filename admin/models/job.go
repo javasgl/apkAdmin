@@ -22,7 +22,7 @@ type PackingJobs struct {
 	CreateTime      int64  `json:"createTime"`
 	CreatorId       int    `json:"creatorId"`
 	Status          int    `json:"status"`
-	DownloadUrl     string `orm:"size(100)" json:"downloadUrl`
+	DownloadUrl     string `orm:"size(100)" json:"downloadUrl"`
 	SplashImage     string `json:"splashImage"`
 }
 
@@ -37,7 +37,7 @@ type JobList struct {
 	CreateTime      int64  `json:"createTime"`
 	CreatorId       int    `json:"creatorId"`
 	Status          int    `json:"status"`
-	DownloadUrl     string `orm:"size(100)" json:"downloadUrl`
+	DownloadUrl     string `orm:"size(100)" json:"downloadUrl"`
 	SplashImage     string `json:"splashImage"`
 	Username        string `json:"username"`
 }
